@@ -1,0 +1,28 @@
+name: 🛠️ Desafio 2 - Gatilhos Básicos
+
+on:
+  # 1. Disparar em push para main
+  push:
+    branches: [ main ]
+
+  # 2. Disparar em pull request para main
+  pull_request:
+    branches: [ main ]
+
+  # 3. Permitir disparo manual
+  workflow_dispatch:
+  # Opcional: Você pode adicionar inputs aqui se precisar de parâmetros no disparo manual
+
+jobs:
+  exibir_gatilho:
+    runs-on: ubuntu-latest
+    steps:
+      # 4. Exibir em qual evento foi disparado
+      - name: 🏷️ Exibir Evento do Gatilho
+        run: |
+          echo "O workflow foi disparado pelo evento: ${{ github.event_name }}"
+          echo "O nome do branch/tag que disparou é: ${{ github.ref }}"
+
+      # Exemplo de uma ação que você executaria
+      - name: 🚀 Ação de Exemplo
+        run: echo "Ação em execução..."
